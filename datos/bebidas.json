@@ -1,0 +1,46 @@
+[
+    {
+        "nombre": "Agua Mineral",
+        "costo": 0.8,
+        "stock": 500,
+        "mililitros": 500,
+        "origen": "Mendoza",
+        "precio": 1.04
+    },
+    {
+        "nombre": "Gaseosa Fanta 1.5",
+        "costo": 8,
+        "stock": 100,
+        "mililitros": 1500,
+        "sabor": "Naranja",
+        "gasificada": true,
+        "precio": 12.0
+    },
+    {
+        "nombre": "Gaseosa Coca-Cola 2.25",
+        "costo": 10,
+        "stock": 150,
+        "mililitros": 2250,
+        "sabor": "Coca-Cola",
+        "gasificada": true,
+        "precio": 15.0
+    },
+    {
+        "nombre": "Jugo",
+        "costo": 3,
+        "stock": 150,
+        "mililitros": 500,
+        "sabor": "Manzana",
+        "gasificada": false,
+        "precio": 4.5
+    },
+    {
+        "nombre": "Jugo gasificado",
+        "costo": 5,
+        "stock": 150,
+        "mililitros": 500,
+        "sabor": "naranja",
+        "gasificada": true,
+        "precio": 7.5
+    }
+]
