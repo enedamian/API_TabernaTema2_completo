@@ -11,6 +11,6 @@ Moe quiere establecer los precios de las bebidas de forma distinta:
 
 Las bebidas están modeladas de la siguiente manera:
 
-![Diagrama de clases](modelos/entidades/diagrama-clases.jpg)
+![Diagrama de clases](img/diagrama-clases.jpg)
 
 1. Moe comenzó a desarrollar la API pero no la terminó. Completá lo que falta y corregí los errores que cometió Moe. Donde corrijas un error agregá un comentario indicando el error corregido.
