@@ -21,18 +21,24 @@ def obtener_bebida(nombre):
 
 @bp_bebidas.route("/bebidas", methods = ["POST"])
 def agregar_bebida():
-    datos = request.json
-    try:
-        if "origen" in datos:
-            bebida = Agua.fromDiccionario(datos)
-            tipo = "agua"
-        else:
-            bebida = Refresco.fromDiccionario(datos)
-            tipo = "refresco"
-        repo_bebidas.agregarBebida(bebida)
-        return jsonify({"Mensaje":f"Bebida ({tipo}) agregada con éxito.","bebida":bebida.toDiccionario()}), 201
-    except ValueError as e:
-        return jsonify({"error": str(e)}), 400
+    if request.is_json:
+        datos = request.json
+        try:
+            if "origen" in datos:
+                bebida = Agua.fromDiccionario(datos)
+                tipo = "agua"
+            else:
+                bebida = Refresco.fromDiccionario(datos)
+                tipo = "refresco"
+            if not repo_bebidas.existeBebida(bebida.obtenerNombre()):                
+                repo_bebidas.agregarBebida(bebida)
+                return jsonify({"Mensaje":f"Bebida ({tipo}) agregada con éxito.","bebida":bebida.toDiccionario()}), 201
+            else:
+                return jsonify({"error": "Ya existe una bebida con ese nombre"}), 400
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+    else:
+        return jsonify({"error": "El cuerpo de la petición debe ser JSON"}), 400
     
 @bp_bebidas.route("/bebidas/<string:nombre>", methods = ["PUT"])
 def modificar_bebida(nombre):

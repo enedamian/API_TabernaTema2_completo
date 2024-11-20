@@ -38,6 +38,8 @@ class RepositorioBebidas:
     
     def obtenerBebidaPorNombre(self, nombre:str):
         """Retorna la bebida con el nombre indicado, None si no existe"""
+        if not isinstance(nombre, str) or nombre == "" or nombre.isspace():
+            raise ValueError("El nombre debe ser un string y no puede estar vacío")
         for bebida in self.__bebidas:
             if bebida.obtenerNombre() == nombre:
                 return bebida
@@ -45,10 +47,14 @@ class RepositorioBebidas:
     
     def existeBebida(self, nombre:str):
         """Retorna True si existe una bebida con el nombre indicado, False en caso contrario"""
+        if not isinstance(nombre, str) or nombre == "" or nombre.isspace():
+            raise ValueError("El nombre debe ser un string y no puede estar vacío")
         return self.obtenerBebidaPorNombre(nombre) != None
     
     def agregarBebida(self, bebida: Bebida):
         """Agrega una bebida al repositorio. Lanza ValueError si ya existe una bebida con el mismo nombre"""
+        if not isinstance(bebida, Bebida):
+            raise ValueError("El objeto a agregar debe ser una bebida")
         if self.existeBebida(bebida.obtenerNombre()):
             raise ValueError("Ya existe una bebida con ese nombre")
         self.__bebidas.append(bebida)
@@ -56,6 +62,10 @@ class RepositorioBebidas:
 
     def actualizarBebida(self, nombre:str, bebida: Bebida)->bool:
         """Actualiza los datos de una bebida en base a su nombre. Retorna True si la bebida fue actualizada, False en caso contrario"""
+        if not isinstance(nombre, str) or nombre == "" or nombre.isspace():
+            raise ValueError("El nombre debe ser un string y no puede estar vacío")
+        if not isinstance(bebida, Bebida):
+            raise ValueError("El objeto a actualizar debe ser una bebida")
         for bebida_a_modificar in self.__bebidas:
             if bebida_a_modificar.obtenerNombre() == nombre:                
                 bebida_a_modificar = bebida
@@ -65,6 +75,8 @@ class RepositorioBebidas:
     
     def eliminarBebida(self, nombre:str)->bool:
         """Elimina una bebida en base a su nombre. Retorna True si la bebida fue eliminada, False en caso contrario"""
+        if not isinstance(nombre, str) or nombre == "" or nombre.isspace():
+            raise ValueError("El nombre debe ser un string y no puede estar vacío")
         for bebida in self.__bebidas:
             if bebida.obtenerNombre() == nombre:
                 self.__bebidas.remove(bebida)
